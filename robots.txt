@@ -1,1 +1,1 @@
-User-agent: * Disallow: Sitemap: https://polar3197.github.io/charlie-site/sitemap.xml
+User-agent: * Disallow: Sitemap: https://polar3197.github.io/sitemap.xml
