@@ -6,7 +6,7 @@
         <a class="navbar-brand title font-weight-lighter" href="{{ site.baseurl }}/">
           {% if site.title == 'blank' %}
             {% if site.first_name %}
-              <span class="font-weight-bold">
+              <span>
                 {{- site.first_name -}}
               </span>
             {% endif %}
@@ -60,7 +60,7 @@
           {% assign sorted_pages = site.pages | sort: 'nav_order' %}
           {% for p in sorted_pages %}
             {% if p.nav and p.autogen == null %}
-              {% if p.dropdown %}
+                {% if false %} <!-- p.dropdown --> 
                 {% assign has_active_child = false %}
                 {% for child in p.children %}
                   {% if page.title == child.title %}
@@ -125,7 +125,7 @@
               </button>
             </li>
           {% endif %}
-          {% if site.enable_darkmode %}
+          {%if false %}<!--if site.enable_darkmode --> 
             <!-- Toogle theme mode -->
             <li class="toggle-container">
               <button id="light-toggle" title="Change theme">
@@ -139,7 +139,7 @@
       </div>
     </div>
   </nav>
-  {% if site.enable_progressbar %}
+  {% if false %} <!-- if site.enable_progressbar -->
     <!-- Scrolling Progress Bar -->
     <progress id="progress" value="0">
       <div class="progress-container">

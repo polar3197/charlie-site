@@ -48,10 +48,10 @@ rss_icon: true
 # -----------------------------------------------------------------------------
 
 navbar_fixed: true
-footer_fixed: true
+footer_fixed: false 
 search_enabled: true
-socials_in_search: true
-bib_search: true
+socials_in_search: false 
+bib_search: false 
 
 # Dimensions
 max_width: 930px
@@ -96,7 +96,7 @@ pagination:
   enabled: true
 
 related_blog_posts:
-  enabled: true
+  enabled: false 
   max_related: 5
 
 # Giscus comments (RECOMMENDED)
@@ -144,7 +144,7 @@ newsletter:
 
 collections:
   projects:
-    output: true
+    output: false 
     permalink: /:collection/:title/
 
 # -----------------------------------------------------------------------------
