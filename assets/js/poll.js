@@ -1,4 +1,4 @@
-// Ensure the script runs only after the page loads
+// Ensure script runs after page loads
 document.addEventListener("DOMContentLoaded", function () {
     console.log("✅ poll.js is running!");
 
@@ -8,18 +8,6 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
-    // Initialize Firebase (Uses globally loaded Firebase from poll.html)
-    const firebaseConfig = {
-        apiKey: "AIzaSyDgpA7bQqbxB6FHGvzH3hhsTEjj5HqfOPk",
-        authDomain: "webpoll-df05f.firebaseapp.com",
-        projectId: "webpoll-df05f",
-        storageBucket: "webpoll-df05f.appspot.com",
-        messagingSenderId: "950117028692",
-        appId: "1:950117028692:web:9dba1d31ea590f9aa8eec1",
-        measurementId: "G-0ECNVS3QVJ"
-    };
-
-    firebase.initializeApp(firebaseConfig);
     const db = firebase.firestore();
 
     console.log("🔥 Firebase initialized:", firebase);
@@ -38,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     [option]: firebase.firestore.FieldValue.increment(1)
                 });
             } else {
-                // ✅ If the document doesn’t exist (first vote), create it
+                // ✅ If the document doesn’t exist, create it
                 await pollRef.set({ yes: 0, no: 0, maybe: 0, [option]: 1 });
             }
             alert("Vote submitted!");
