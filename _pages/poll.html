@@ -24,5 +24,10 @@ permalink: /poll/
 <h3>votes:</h3>
 <ul id="results"></ul>
 
-<!-- Firebase Poll Script -->
+<!-- Load Firebase SDKs BEFORE poll.js -->
+<script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js"></script>
+
+<!-- Load Poll Script -->
 <script type="module" src="{{ '/assets/js/poll.js' | relative_url }}"></script>
+

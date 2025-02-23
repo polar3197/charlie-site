@@ -1,5 +1,9 @@
+// Import Firebase modules
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
+
+// Debugging: Check if poll.js is loaded
+console.log("✅ poll.js is running!");
 
 // Firebase configuration
 const firebaseConfig = {
@@ -14,9 +18,10 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
 console.log("🔥 Firebase initialized:", app);
+
+// Initialize Firestore
+const db = getFirestore(app);
 console.log("🔥 Firestore database reference:", db);
 
 // Reference to poll document
