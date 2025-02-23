@@ -1,6 +1,5 @@
-// Import necessary Firebase Firestore modules
 import { initializeApp } from "firebase/app";
-import { getFirestore, doc, updateDoc, getDoc, setDoc, onSnapshot } from "firebase/firestore";
+import { getFirestore } from "firebase/firestore";
 
 // Firebase configuration
 const firebaseConfig = {
@@ -13,9 +12,12 @@ const firebaseConfig = {
     measurementId: "G-0ECNVS3QVJ"
 };
 
-// Initialize Firebase and Firestore
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+
+console.log("🔥 Firebase initialized:", app);
+console.log("🔥 Firestore database reference:", db);
 
 // Reference to poll document
 const pollRef = doc(db, "poll", "TheGI6hg4tCo4dWsTp6Z"); // Match the document ID
