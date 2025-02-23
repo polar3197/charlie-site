@@ -4,24 +4,34 @@ title: Poll
 permalink: /poll/
 ---
 
-<h2>Is it worth another shot?</h2>
+<div class="poll-container">
+  <!-- Left: Poll Content -->
+  <div class="poll-content">
+    <h2>Is it worth another shot?</h2>
 
-<form id="poll-form">
-  <label>
-    <input type="radio" name="vote" value="yes"> Yes
-  </label><br>
-  <label>
-    <input type="radio" name="vote" value="no"> No
-  </label><br>
-  <label>
-    <input type="radio" name="vote" value="maybe"> Maybe
-  </label><br><br>
+    <form id="poll-form">
+      <label>
+        <input type="radio" name="vote" value="yes"> Yes
+      </label><br>
+      <label>
+        <input type="radio" name="vote" value="no"> No
+      </label><br>
+      <label>
+        <input type="radio" name="vote" value="maybe"> Maybe
+      </label><br><br>
 
-  <button type="submit">Vote</button>
-</form>
+      <button type="submit">Vote</button>
+    </form>
 
-<h3>votes:</h3>
-<ul id="results"></ul>
+    <h3>votes:</h3>
+    <ul id="results"></ul>
+  </div>
+
+  <!-- Right: Image -->
+  <div class="poll-image">
+    <img src="{{ '/assets/img/f_and_c.png' | relative_url }}" alt="Poll Image">
+  </div>
+</div>
 
 <!-- Load Firebase SDKs from CDN -->
 <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
@@ -47,5 +57,3 @@ permalink: /poll/
 
 <!-- Load Poll Script -->
 <script src="{{ '/assets/js/poll.js' | relative_url }}"></script>
-
-

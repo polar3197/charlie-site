@@ -1,0 +1,15 @@
+.poll-container {
+    display: flex;
+    align-items: center; /* Centers poll & image */
+    gap: 20px; /* Space between poll and image */
+}
+
+.poll-content {
+    flex: 1; /* Takes remaining space */
+}
+
+.poll-image img {
+    width: 300px; /* Adjust size */
+    height: auto;
+    border-radius: 10px; /* Optional rounded corners */
+}
