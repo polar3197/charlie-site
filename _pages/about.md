@@ -13,7 +13,7 @@ latest_posts:
   scrollable: false # adds a vertical scroll bar if there are more than 3 new posts items
   limit: 3 # leave blank to include all the blog posts
 ---
-## Fran, would you mind taking the poll up in the right corner?
+## Fran would u take the poll up on the right ?
 
 <br><br><br>
 
