@@ -1,12 +1,11 @@
-// Import necessary Firebase modules
+// Import necessary Firebase Firestore modules
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, onValue, runTransaction } from "firebase/database";
+import { getFirestore, doc, updateDoc, getDoc, setDoc, onSnapshot } from "firebase/firestore";
 
 // Firebase configuration
 const firebaseConfig = {
     apiKey: "AIzaSyDgpA7bQqbxB6FHGvzH3hhsTEjj5HqfOPk",
     authDomain: "webpoll-df05f.firebaseapp.com",
-    databaseURL: "https://webpoll-df05f-default-rtdb.firebaseio.com/",  // Ensure correct database URL
     projectId: "webpoll-df05f",
     storageBucket: "webpoll-df05f.appspot.com",
     messagingSenderId: "950117028692",
@@ -14,23 +13,36 @@ const firebaseConfig = {
     measurementId: "G-0ECNVS3QVJ"
 };
 
-// Initialize Firebase and Database
+// Initialize Firebase and Firestore
 const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
+const db = getFirestore(app);
+
+// Reference to poll document
+const pollRef = doc(db, "poll", "TheGI6hg4tCo4dWsTp6Z"); // Match the document ID
 
 // Function to submit a vote
-function vote(option) {
-    const voteRef = ref(db, "poll/" + option);
-
-    runTransaction(voteRef, (currentVotes) => {
-        return (currentVotes || 0) + 1; // Increase the count atomically
-    });
+async function vote(option) {
+    try {
+        const pollSnap = await getDoc(pollRef);
+        if (pollSnap.exists()) {
+            // ✅ Increase the count for the selected option
+            await updateDoc(pollRef, {
+                [option]: pollSnap.data()[option] + 1
+            });
+        } else {
+            // ✅ If the document doesn’t exist (first vote), create it
+            await setDoc(pollRef, { yes: 0, no: 0, maybe: 0, [option]: 1 });
+        }
+        alert("Vote submitted!");
+    } catch (error) {
+        console.error("Error submitting vote:", error);
+    }
 }
 
-// Event listener for form submission
+// Handle form submission
 document.getElementById("poll-form").addEventListener("submit", function (event) {
     event.preventDefault();
-
+    
     const selectedOption = document.querySelector('input[name="vote"]:checked');
     if (!selectedOption) {
         alert("Please select an option.");
@@ -38,21 +50,21 @@ document.getElementById("poll-form").addEventListener("submit", function (event)
     }
 
     vote(selectedOption.value);
-    alert("Vote submitted!");
 });
 
 // Live update results in real time
-const resultsRef = ref(db, "poll");
-onValue(resultsRef, (snapshot) => {
-    const results = snapshot.val();
-    const resultsList = document.getElementById("results");
-    resultsList.innerHTML = "";
-
-    if (results) {
-        Object.entries(results).forEach(([option, count]) => {
-            let li = document.createElement("li");
-            li.textContent = `${option}: ${count} votes`;
-            resultsList.appendChild(li);
-        });
+onSnapshot(pollRef, (docSnap) => {
+    if (docSnap.exists()) {
+        updateResults(docSnap.data());
     }
 });
+
+// Function to update poll results dynamically
+function updateResults(data) {
+    const resultsList = document.getElementById("results");
+    resultsList.innerHTML = `
+        <li>Yes: ${data.yes} votes</li>
+        <li>No: ${data.no} votes</li>
+        <li>Maybe: ${data.maybe} votes</li>
+    `;
+}

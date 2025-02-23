@@ -5,24 +5,24 @@ permalink: /poll/
 ---
 
 <h2>Vote in the Poll</h2>
-<p>Which is your favorite programming language?</p>
+<p>Is it worth another shot?</p>
 
 <form id="poll-form">
   <label>
-    <input type="radio" name="vote" value="Python"> Python
+    <input type="radio" name="vote" value="yes"> Yes
   </label><br>
   <label>
-    <input type="radio" name="vote" value="JavaScript"> JavaScript
+    <input type="radio" name="vote" value="no"> No
   </label><br>
   <label>
-    <input type="radio" name="vote" value="C++"> C++
+    <input type="radio" name="vote" value="maybe"> Maybe
   </label><br><br>
 
   <button type="submit">Vote</button>
 </form>
 
-<h3>Live Results:</h3>
+<h3>votes:</h3>
 <ul id="results"></ul>
 
-<!-- Firebase Poll Script (Ensure it's type="module" for ES6 imports) -->
+<!-- Firebase Poll Script -->
 <script type="module" src="{{ '/assets/js/poll.js' | relative_url }}"></script>
