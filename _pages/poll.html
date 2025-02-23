@@ -1,0 +1,27 @@
+---
+layout: default
+title: Poll
+permalink: /poll/
+---
+
+<h2>Vote in the Poll</h2>
+<p>Which is your favorite programming language?</p>
+
+<form id="poll-form">
+  <label>
+    <input type="radio" name="vote" value="Python"> Python
+  </label><br>
+  <label>
+    <input type="radio" name="vote" value="JavaScript"> JavaScript
+  </label><br>
+  <label>
+    <input type="radio" name="vote" value="C++"> C++
+  </label><br><br>
+
+  <button type="submit">Vote</button>
+</form>
+
+<h3>Live Results:</h3>
+<ul id="results"></ul>
+
+<script src="{{ '/assets/js/poll.js' | relative_url }}"></script>
