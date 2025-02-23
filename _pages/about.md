@@ -13,9 +13,5 @@ latest_posts:
   scrollable: false # adds a vertical scroll bar if there are more than 3 new posts items
   limit: 3 # leave blank to include all the blog posts
 ---
-## Fran would u take the poll up on the right ?
-
-<br><br><br>
-
-This site is where I share my post-grad ML projects, woodworking and some occasional paintings. I hope you enjoy.
+# This site is where I share my post-grad ML projects, woodworking and some occasional paintings. I hope you enjoy.
 
