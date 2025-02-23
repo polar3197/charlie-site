@@ -18,7 +18,7 @@
     {% if site.newsletter.enabled %}
       {% include newsletter.liquid %}
     {% endif %}
-
+    {% comment %}
     <div class="container">
       &copy; Copyright {{ site.time | date: '%Y' }}
       {{ site.first_name }}
@@ -31,5 +31,6 @@
         Last updated: {{ 'now' | date: '%B %d, %Y' }}.
       {% endif %}
     </div>
+    {% endcomment %}
   </footer>
 {% endif %}
